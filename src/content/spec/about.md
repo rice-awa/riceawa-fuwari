@@ -1,9 +1,12 @@
-# About
-This is the demo site for [Fuwari](https://github.com/saicaca/fuwari).
+# 关于
 
-::github{repo="saicaca/fuwari"}
+这是 [rice-awa](https://github.com/rice-awa) 的个人技术博客。
 
-> ### Sources of images used in this site
-> - [Unsplash](https://unsplash.com/)
-> - [星と少女](https://www.pixiv.net/artworks/108916539) by [Stella](https://www.pixiv.net/users/93273965)
-> - [Rabbit - v1.4 Showcase](https://civitai.com/posts/586908) by [Rabbit_YourMajesty](https://civitai.com/user/Rabbit_YourMajesty)
+本项目基于 [Fuwari](https://github.com/saicaca/fuwari) 模板构建。
+
+::github{repo="rice-awa/riceawa-fuwari"}
+
+## 联系方式
+- GitHub: [rice-awa](https://github.com/rice-awa)
+- Bilibili: [rice-awa的空间](https://space.bilibili.com/521856101)
+- 主页: [rice-awa.top](https://rice-awa.top)
