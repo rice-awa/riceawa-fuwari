@@ -2,6 +2,7 @@
 title: Markdown 示例
 published: 2023-10-01
 description: 一个简单的 Markdown 博客文章示例。
+author: saicaca
 tags: [Markdown, 博客, 示例]
 category: 示例
 draft: false

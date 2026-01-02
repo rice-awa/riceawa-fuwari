@@ -3,6 +3,7 @@ title: Fuwari 简易指南
 published: 2024-04-01
 description: "如何使用这个博客模板。"
 image: "./cover.jpeg"
+author: saicaca
 tags: ["Fuwari", "博客", "定制化"]
 category: 指南
 draft: false

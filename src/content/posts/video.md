@@ -2,6 +2,7 @@
 title: 在文章中嵌入视频
 published: 2023-08-01
 description: 这篇文章演示了如何在博客文章中嵌入视频。
+author: saicaca
 tags: [示例, 视频]
 category: 示例
 draft: false
