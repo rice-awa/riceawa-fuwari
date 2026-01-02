@@ -2,7 +2,10 @@
   "permissions": {
     "allow": [
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(dir:*)",
+      "Bash(cat:*)",
+      "Bash(if not exist \"e:\\\\Python_JavaScript\\\\riceawa-fuwari\\\\claude_md\\\\optimization\" mkdir \"e:\\\\Python_JavaScript\\\\riceawa-fuwari\\\\claude_md\\\\optimization\")"
     ],
     "deny": [],
     "ask": []
