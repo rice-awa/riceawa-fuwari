@@ -1,6 +1,6 @@
 ---
 title: Vibe Coding 完全指南：从代码执行者到创意决策者的编程革命
-date: 2026-01-03
+published: 2026-01-03
 author: rice-awa
 description: 2025年初，OpenAI联合创始人Andrej Karpathy提出了革命性概念“vibe coding”。本文全面解析其核心理念、主流工具和实践方法，帮助你掌握从“How”到“What”的思维跃迁，开启沉浸式编程体验。
 tags:
