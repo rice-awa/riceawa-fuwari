@@ -65,7 +65,12 @@
         @apply opacity-0 pointer-events-none
     }
 
+    #toc-wrapper {
+        width: max(12rem, var(--toc-width));
+    }
+
     #toc-inner-wrapper {
+        width: max(12rem, var(--toc-width));
         mask-image: linear-gradient(to bottom, transparent 0%, black 2rem, black calc(100% - 2rem), transparent 100%);
     }
 
