@@ -465,9 +465,11 @@ let toc = document.getElementById('toc-wrapper');
 let navbar = document.getElementById('navbar-wrapper')
 function scrollFunction() {
 	let bannerHeight = window.innerHeight * (BANNER_HEIGHT / 100)
+	// 使用固定阈值，在所有屏幕尺寸上保持一致的行为
+	let backToTopThreshold = 400
 
 	if (backToTopBtn) {
-		if (document.body.scrollTop > bannerHeight || document.documentElement.scrollTop > bannerHeight) {
+		if (document.body.scrollTop > backToTopThreshold || document.documentElement.scrollTop > backToTopThreshold) {
 			backToTopBtn.classList.remove('hide')
 		} else {
 			backToTopBtn.classList.add('hide')
