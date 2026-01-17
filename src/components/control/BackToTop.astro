@@ -36,21 +36,20 @@ import { Icon } from "astro-icon/components";
     transform: translateX(0)
     pointer-events: auto
     @media (min-width: 1024px)
+        bottom: 2rem
+        right: 1.5rem
+    // 超宽屏幕时，将按钮移到内容区域右侧外部
+    @media (min-width: 1600px)
         bottom: 10rem
-        right: 0
-        transform: translateX(5rem)
+        right: calc((100vw - var(--page-width)) / 2 - 5rem)
     i
         font-size: 1.75rem
     &.hide
         opacity: 0
         pointer-events: none
         transform: scale(0.9)
-        @media (min-width: 1024px)
-            transform: translateX(5rem) scale(0.9)
     &:active
         transform: scale(0.9)
-        @media (min-width: 1024px)
-            transform: translateX(5rem) scale(0.9)
 
 </style>
 
