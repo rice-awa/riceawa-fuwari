@@ -2,7 +2,7 @@
 title: 如何下载 B 站视频
 published: 2026-01-18
 author: rice-awa
-description: 
+description: "本文介绍三种下载B站视频的方法：在线网站、浏览器插件和桌面客户端，满足从轻度到重度的各种下载需求。"
 tags:
   - 教程
   - 浏览器插件
