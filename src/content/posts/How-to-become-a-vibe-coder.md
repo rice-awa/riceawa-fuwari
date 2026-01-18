@@ -9,9 +9,7 @@ tags:
   - 编程范式
   - 开发者工具
   - 人工智能
-categories:
-  - 技术指南
-  - 人工智能
+category: AI
 draft: false
 ---
 
