@@ -10,7 +10,7 @@ interface Heading {
     text: string;
 }
 
-export let headings: Heading[] = [];
+let { headings = [] }: { headings: Heading[] } = $props();
 
 let isOpen = $state(false);
 let panelEl: HTMLElement;
