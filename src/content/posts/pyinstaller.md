@@ -19,7 +19,7 @@ description: 详细教程：如何使用PyInstaller将Python单文件脚本打�
 ### 1. 打开命令窗口
 
 在资源管理器中导航到脚本所在目录，在地址栏输入`cmd`回车：
-![打开命令窗口](assets/images/pyinstaller/2.png)
+![打开命令窗口](../../assets/images/pyinstaller/2.png)
 
 ### 2.安装PyInstaller
 
@@ -35,7 +35,7 @@ pip install pyinstaller
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pyinstaller
 ```
 
-![安装pyinstaller](assets/images/pyinstaller/3.png)
+![安装pyinstaller](../../assets/images/pyinstaller/3.png)
 
 ### 3. 基本打包命令
 
@@ -43,7 +43,7 @@ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pyinstaller
 pyinstaller -F 你的脚本.py
 ```
 
-![基本打包](assets/images/pyinstaller/4.png)
+![基本打包](../../assets/images/pyinstaller/4.png)
 
 ### 4. 带图标的打包命令
 

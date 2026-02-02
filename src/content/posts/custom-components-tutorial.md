@@ -28,7 +28,7 @@ description: '通过本教程开始使用自定义组件构建。'
 
 到目前为止，所有组件都是内置于Minecraft中的，通过各种参数来控制组件的行为。使用[自定义组件](./CustomComponents.md)，现在处于预览阶段，并将在即将发布的Minecraft版本中更广泛地提供，您可以结合脚本为方块和物品定义自己的行为！在本教程中，我们将通过添加新的草莓作物和草莓物品，制作一个小的方块和物品示例。草莓植物将具有这样的行为：如果在成熟时没有被采摘，它们会变坏。您必须把握好时机才能获得新鲜的草莓，在这个示例中，您将看到管理作物生长速度的方块组件以及自定义物品效果。
 
-![草莓农场和一些腐烂的草莓](assets/images/strawberryfarm.png)
+![草莓农场和一些腐烂的草莓](../../assets/images/strawberryfarm.png)
 
 您可以在[github.com/microsoft/minecraft-scripting-samples](https://github.com/microsoft/minecraft-scripting-samples/tree/main/custom-components)上找到此示例的源代码。
 
