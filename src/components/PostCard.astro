@@ -41,8 +41,38 @@ const hasCover = image !== undefined && image !== null && image !== "";
 const coverWidth = "28%";
 
 const { remarkPluginFrontmatter } = await entry.render();
+
+// Format date for compact view
+const formatDate = (date: Date) => {
+    return date.toLocaleDateString('zh-CN', { year: 'numeric', month: '2-digit', day: '2-digit' });
+};
 ---
-<div class:list={["card-base flex flex-col-reverse md:flex-col w-full rounded-[var(--radius-large)] overflow-hidden relative", className]} style={style}>
+
+<!-- Compact horizontal layout for small screens -->
+<a href={url} class:list={["compact-card card-base flex sm:hidden items-center gap-3 p-3 hover:bg-[var(--btn-card-bg-hover)] active:bg-[var(--btn-card-bg-active)] group", className]} style={style}>
+    {hasCover && 
+        <div class="w-16 h-16 flex-shrink-0 rounded-lg overflow-hidden">
+            <ImageWrapper src={image} basePath={path.join("content/posts/", getDir(entry.id))} alt="Cover" class="w-full h-full object-cover" />
+        </div>
+    }
+    {!hasCover && 
+        <div class="w-16 h-16 flex-shrink-0 rounded-lg bg-[var(--btn-regular-bg)] flex items-center justify-center">
+            <Icon name="material-symbols:article-outline" class="text-2xl text-[var(--primary)]" />
+        </div>
+    }
+    <div class="flex-1 min-w-0">
+        <h3 class="font-bold text-base text-90 line-clamp-1 group-hover:text-[var(--primary)] transition">{title}</h3>
+        <div class="flex items-center gap-2 mt-1 text-xs text-50">
+            <span>{formatDate(published)}</span>
+            {category && <span class="text-[var(--primary)]">{category}</span>}
+        </div>
+        <p class="text-xs text-75 line-clamp-1 mt-1">{description || remarkPluginFrontmatter.excerpt}</p>
+    </div>
+    <Icon name="material-symbols:chevron-right-rounded" class="text-2xl text-[var(--primary)] opacity-0 group-hover:opacity-100 transition flex-shrink-0" />
+</a>
+
+<!-- Original full layout for sm screens and above -->
+<div class:list={["card-base hidden sm:flex flex-col-reverse md:flex-col w-full rounded-[var(--radius-large)] overflow-hidden relative", className]} style={style}>
     <div class:list={["pl-6 md:pl-9 pr-6 md:pr-2 pt-6 md:pt-7 pb-6 relative", {"w-full md:w-[calc(100%_-_52px_-_12px)]": !hasCover, "w-full md:w-[calc(100%_-_var(--coverWidth)_-_12px)]": hasCover}]}>
         <a href={url}
            class="transition group w-full block font-bold mb-3 text-3xl text-90
@@ -104,7 +134,7 @@ const { remarkPluginFrontmatter } = await entry.render();
         </a>
     }
 </div>
-<div class="transition border-t-[1px] border-dashed mx-6 border-black/10 dark:border-white/[0.15] last:border-t-0 md:hidden"></div>
+<div class="transition border-t-[1px] border-dashed mx-6 border-black/10 dark:border-white/[0.15] last:border-t-0 sm:hidden"></div>
 
 <style define:vars={{coverWidth}}>
 </style>
