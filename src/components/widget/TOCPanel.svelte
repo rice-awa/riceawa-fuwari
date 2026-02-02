@@ -10,18 +10,18 @@ interface Heading {
     text: string;
 }
 
-let { headings = [] }: { headings: Heading[] } = $props();
+let { headings: initialHeadings = [] }: { headings: Heading[] } = $props();
 
 let isOpen = $state(false);
-let panelEl: HTMLElement;
-let minDepth = 10;
-
-// Calculate minDepth
-for (const heading of headings) {
-    minDepth = Math.min(minDepth, heading.depth);
-}
-
-let heading1Count = 1;
+let panelEl: HTMLElement | undefined = $state(undefined);
+let headings = $state<Heading[]>([...initialHeadings]);
+let minDepth = $derived.by(() => {
+    let min = 10;
+    for (const heading of headings) {
+        min = Math.min(min, heading.depth);
+    }
+    return min;
+});
 
 const removeTailingHash = (text: string) => {
     let lastIndexOfHash = text.lastIndexOf("#");
@@ -46,16 +46,80 @@ function handleClickOutside(event: MouseEvent) {
 }
 
 function handleHeadingClick() {
-    // Close panel after clicking a heading link
     setTimeout(() => {
         closePanel();
     }, 100);
 }
 
+// Update headings from the desktop TOC component
+function updateHeadingsFromDOM() {
+    const tocWrapper = document.getElementById('toc');
+    if (!tocWrapper) {
+        headings = [];
+        return;
+    }
+    
+    const tocLinks = tocWrapper.querySelectorAll<HTMLAnchorElement>('a[href^="#"]');
+    if (tocLinks.length === 0) {
+        headings = [];
+        return;
+    }
+    
+    const newHeadings: Heading[] = [];
+    
+    tocLinks.forEach(link => {
+        const hash = link.getAttribute('href')?.substring(1);
+        if (!hash) return;
+        
+        const decodedHash = decodeURIComponent(hash);
+        const targetElement = document.getElementById(decodedHash);
+        if (!targetElement) return;
+        
+        const tagName = targetElement.tagName.toLowerCase();
+        if (!tagName.match(/^h[1-6]$/)) return;
+        
+        const depth = parseInt(tagName.substring(1));
+        newHeadings.push({
+            depth: depth,
+            slug: hash,
+            text: targetElement.textContent || ''
+        });
+    });
+    
+    headings = newHeadings;
+    isOpen = false;
+}
+
+function handleSwupContentReplace() {
+    // Wait for DOM to be updated
+    setTimeout(() => {
+        updateHeadingsFromDOM();
+    }, 150);
+}
+
 onMount(() => {
+    // Set up click outside handler
     document.addEventListener("click", handleClickOutside);
+    
+    // Listen to Swup content replace events
+    const setupSwupListener = () => {
+        if (window.swup) {
+            window.swup.hooks.on("content:replace", handleSwupContentReplace);
+        }
+    };
+    
+    if (window.swup) {
+        setupSwupListener();
+    } else {
+        document.addEventListener("swup:enable", setupSwupListener);
+    }
+    
+    // Cleanup
     return () => {
         document.removeEventListener("click", handleClickOutside);
+        if (window.swup) {
+            window.swup.hooks.off("content:replace", handleSwupContentReplace);
+        }
     };
 });
 </script>
@@ -81,8 +145,7 @@ onMount(() => {
             </button>
         </div>
         <div class="toc-panel-content">
-            {#each headings.filter((h) => h.depth < minDepth + 3) as heading}
-                {@const resetCount = heading.depth === minDepth ? heading1Count++ : null}
+            {#each headings.filter((h) => h.depth < minDepth + 3) as heading, idx}
                 <a
                     href={`#${heading.slug}`}
                     onclick={handleHeadingClick}
@@ -95,7 +158,7 @@ onMount(() => {
                         class:depth-2={heading.depth === minDepth + 2}
                     >
                         {#if heading.depth === minDepth}
-                            {resetCount}
+                            {headings.filter((h) => h.depth < minDepth + 3).slice(0, idx + 1).filter(h => h.depth === minDepth).length}
                         {:else if heading.depth === minDepth + 1}
                             <div class="transition w-2 h-2 rounded-[0.1875rem] bg-[var(--toc-badge-bg)]"></div>
                         {:else if heading.depth === minDepth + 2}
