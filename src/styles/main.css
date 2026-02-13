@@ -153,7 +153,7 @@
 
 .friend-card {
     @apply transition rounded-[var(--radius-medium)] border border-black/10 dark:border-white/10 p-4 flex items-center gap-4
-    hover:border-[var(--primary)]/40 hover:bg-[var(--btn-card-bg-hover)] active:bg-[var(--btn-card-bg-active)];
+    hover:border-[var(--primary)] hover:bg-[var(--btn-card-bg-hover)] active:bg-[var(--btn-card-bg-active)];
 }
 
 .friend-avatar {
