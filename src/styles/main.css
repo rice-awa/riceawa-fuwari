@@ -150,3 +150,16 @@
     }
   }
 }
+
+.friend-card {
+    @apply transition rounded-[var(--radius-medium)] border border-black/10 dark:border-white/10 p-4 flex items-center gap-4
+    hover:border-[var(--primary)] hover:bg-[var(--btn-card-bg-hover)] active:bg-[var(--btn-card-bg-active)];
+}
+
+.friend-avatar {
+    @apply w-12 h-12 rounded-xl object-cover shrink-0;
+}
+
+.friend-avatar-placeholder {
+    @apply bg-[var(--btn-regular-bg)] text-[var(--btn-content)] dark:text-white/75 flex items-center justify-center font-semibold;
+}
