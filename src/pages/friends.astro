@@ -1,0 +1,43 @@
+---
+import I18nKey from "@i18n/i18nKey";
+import { i18n } from "@i18n/translation";
+import MainGridLayout from "@layouts/MainGridLayout.astro";
+import { getCollection } from "astro:content";
+
+const friends = await getCollection("friends");
+const sortedFriends = friends.sort((a, b) =>
+	a.data.name.localeCompare(b.data.name),
+);
+---
+
+<MainGridLayout title={i18n(I18nKey.friends)} description={i18n(I18nKey.friends)}>
+	<section class="card-base p-6 md:p-8">
+		<h1 class="text-2xl font-bold text-90">{i18n(I18nKey.friends)}</h1>
+		<p class="text-50 mt-2">欢迎交换友情链接，以下是本站已添加的友链。</p>
+		<div class="mt-6 grid gap-4 sm:grid-cols-2">
+			{sortedFriends.map(({ data }) => (
+				<a
+					href={data.url}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="friend-card"
+				>
+					{data.avatar ? (
+						<img src={data.avatar} alt={`${data.name} avatar`} class="friend-avatar" loading="lazy" />
+					) : (
+						<div class="friend-avatar friend-avatar-placeholder">{data.name.slice(0, 1).toUpperCase()}</div>
+					)}
+					<div class="min-w-0">
+						<div class="flex items-center gap-2">
+							<h2 class="text-base font-semibold text-90 truncate">{data.name}</h2>
+						</div>
+						<p class="text-50 text-sm truncate mt-0.5">{data.url}</p>
+						{data.description && (
+							<p class="text-75 text-sm mt-2 line-clamp-2">{data.description}</p>
+						)}
+					</div>
+				</a>
+			))}
+		</div>
+	</section>
+</MainGridLayout>

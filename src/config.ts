@@ -16,7 +16,7 @@ export const siteConfig: SiteConfig = {
 		fixed: false, // Hide the theme color picker for visitors
 	},
 	banner: {
-		enable: true, // Display a banner image at the top of each post	
+		enable: true, // Display a banner image at the top of each post
 		src: "assets/images/demo-banner.png", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
 		position: "center", // Equivalent to object-position, only supports 'top', 'center', 'bottom'. 'center' by default
 		credit: {
@@ -43,6 +43,7 @@ export const navBarConfig: NavBarConfig = {
 	links: [
 		LinkPreset.Home,
 		LinkPreset.Archive,
+		LinkPreset.Friends,
 		LinkPreset.About,
 		{
 			name: "GitHub",
