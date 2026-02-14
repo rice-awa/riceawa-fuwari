@@ -5,11 +5,13 @@ export const vi: Translation = {
 	[Key.home]: "Trang chủ",
 	[Key.about]: "Giới thiệu",
 	[Key.archive]: "Kho bài",
+	[Key.friends]: "Liên kết bạn bè",
 	[Key.search]: "Tìm kiếm",
 
 	[Key.tags]: "Thẻ",
 	[Key.categories]: "Danh mục",
 	[Key.recentPosts]: "Bài viết mới nhất",
+	[Key.toc]: "Mục lục",
 
 	[Key.comments]: "Bình luận",
 
